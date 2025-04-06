@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .passkey-zone {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .passkey-zone:hover {
+            opacity: 1;
+        }
+
+        .passkey-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000;
+            padding: 8px;
+            width: 200px;
+            text-align: center;
+            font-family: "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .passkey-input::placeholder {
+            color: #000;
+            opacity: 0.5;
+        }
+
+        .virus-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 20px rgba(255,0,0,0.3);
+            z-index: 1000;
+            text-align: center;
+            display: none;
+            font-family: "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <main class="image-grid">
+        <!-- These are placeholder images. Replace src and href with your actual content -->
+        <a href="https://shaz5l.netlify.app" class="grid-item"><img src="img/terminal.jpeg" alt=""></a>
+        <a href="https://yeezer.netlify.app/#" class="grid-item"><img src="img/yeezer.jpeg" alt=""></a>
+        <a href="https://stealingswag.netlify.app" class="grid-item"><img src="img/stealingswag.jpeg" alt=""></a>
+        <a href="https://shazaanraza.netlify.app" class="grid-item"><img src="img/main.jpeg" alt=""></a>
+        <a href="https://youtube-downloader-0zmt.onrender.com" class="grid-item"><img src="img/YT.jpeg" alt=""></a>
+        <a href="https://nba-predictor-xbsn.onrender.com" class="grid-item"><img src="img/nba2.jpeg" alt=""></a>
+        <a href="http://www.linkedin.com/in/muhammedraza8" class="grid-item"><img src="img/linkedin.jpeg" alt=""></a>
+        <a href="https://github.com/shazaanraza123" class="grid-item"><img src="img/git.jpeg" alt=""></a>
+        <a href="https://open.spotify.com/user/3174pshtm5kjktbxn2jr5zeik7he?si=21473ffe9a504037&nd=1&dlsi=29274707d20244e6" class="grid-item music-item"><img src="img/music.jpeg" alt=""></a>
+        <a href="contact.html" class="grid-item contact-item"><img src="img/contact.jpeg" alt=""></a>
+    </main>
+    
+    <div class="passkey-zone">
+        <input type="text" class="passkey-input" placeholder="passkey" autocomplete="off">
+    </div>
+
+    <script>
+        const passkeyInput = document.querySelector('.passkey-input');
+        const imageGrid = document.querySelector('.image-grid');
+        
+        function createVirusAlert(message) {
+            const alert = document.createElement('div');
+            alert.className = 'virus-alert';
+            alert.innerHTML = message;
+            document.body.appendChild(alert);
+            return alert;
+        }
+
+        function showFakeVirusAlerts() {
+            const messages = [
+                "⚠️ VIRUS DETECTED!",
+                "❌ CHECKING SEARCH HISTORY",
+                "⚠️ Downloading Suspicious Files...",
+                "❌ WTF ARE YOU SEARCHING UP",
+                "⚠️ System Files Corrupted",
+                "❌ DUMBASS GOOGLED GOOGLE",
+                "⚠️ Data Being Encrypted",
+                "❌ CHECKING BANK BALANCE",
+                "⚠️ Bum ass nigga still lives with his mom",
+                "❌ BROKE ASS NIGGA DETECTED",
+                "⚠️ Looking at jobs for this broke ass nigga",
+                "❌ Checking if this nigga has a girlfriend",
+                "⚠️ NO BITCHES DETECTED"
+            ];
+
+            let delay = 0;
+            messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    const alert = createVirusAlert(msg);
+                    alert.style.display = 'block';
+                    alert.style.left = Math.random() * 80 + 10 + '%';
+                    alert.style.top = Math.random() * 80 + 10 + '%';
+                }, delay);
+                delay += 300;
+            });
+        }
+
+        passkeyInput.addEventListener('keyup', function(event) {
+            if (event.target.value.toLowerCase() === 'kanye') {
+                // Hide all images and input
+                imageGrid.style.display = 'none';
+                passkeyInput.style.display = 'none';
+
+                // Show virus alerts
+                showFakeVirusAlerts();
+
+                // Make the page appear frozen
+                setTimeout(() => {
+                    document.body.style.pointerEvents = 'none';
+                    document.body.style.userSelect = 'none';
+                    // Add more virus alerts periodically
+                    setInterval(() => {
+                        const alert = createVirusAlert("⚠️ New Threat Detected!");
+                        alert.style.display = 'block';
+                        alert.style.left = Math.random() * 80 + 10 + '%';
+                        alert.style.top = Math.random() * 80 + 10 + '%';
+                    }, 1000);
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html> 
